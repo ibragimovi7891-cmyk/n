@@ -1,0 +1,95 @@
+// Ballarni hisoblab borish uchun o'zgaruvchi
+let score = 0;
+
+// HTML elementlarni aniqlab olamiz
+const clickBtn = document.getElementById('click-btn');
+const scoreDisplay = document.getElementById('score');
+
+// Tugma bosilganda bajariladigan hodisa (Event Listener)
+clickBtn.addEventListener('click', () => {
+    score++; // Har safar bosilganda ballni 1 taga oshirish
+    scoreDisplay.textContent = `Ball: ${score}`; // Yangi ballni ekranga chiqarish
+    
+    // Qiziqarli effekt: Har 10 ball to'planganda tugma rangi tasodifiy o'zgaradi
+    if (score % 10 === 0) {
+        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        clickBtn.style.backgroundColor = randomColor;
+    }
+});
+3. Ularni index.html fayliga qanday ulaymiz?
+Ushbu CSS va JS fayllari ishlashi uchun, sizning index.html faylingiz quyidagi ko'rinishda bo'lishi kerak. E'tibor bering, bunda ortiqcha stillar va skriptlar olib tashlanib, ularning o'rniga fayl manzillari ulangan:
+
+HTML
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberZone | O'yinlar Dunyosi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🎮 CyberZone</h1>
+        <nav>
+            <a href="#games">O'yinlar</a>
+            <a href="#mini-game">Klip O'yin</a>
+            <a href="#about">Biz haqimizda</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Eng Oxirgi O'yinlar Dunyosi</h2>
+        <p>CyberZone jamoasiga xush kelibsiz! Bu yerda siz eng mashhur o'yinlar sharhi va yangiliklarini topasiz.</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title" id="games">Top O'yinlar</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600" alt="Cyberpunk">
+                <div class="card-content">
+                    <h3>Cyber Action RPG</h3>
+                    <p>Kelajak neon shaharlarida kechadigan ajoyib ochiq dunyo o'yini. Grafika va syujet eng yuqori darajada.</p>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=600" alt="Football">
+                <div class="card-content">
+                    <h3>Futbol Simulyatori 2026</h3>
+                    <p>Sevimli jamoalaringiz bilan chempionlik kubogini qo'lga kiriting! Real taktikalar mavjud.</p>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600" alt="Retro">
+                <div class="card-content">
+                    <h3>Retro Kosmos</h3>
+                    <p>Klassik pikselli kosmik jangovar o'yin. O'z kemangizni boshqaring va dushmanlarni yo'q qiling.</p>
+                    <a href="#" class="btn">Batafsil</a>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title" id="mini-game">Sayt ichidagi mini-o'yin</h2>
+        <div class="game-box">
+            <h3>Tezlikni sinab ko'ring: Kliker O'yini!</h3>
+            <p>Tugmani imkon qadar ko'proq bosing va yuqori natija qayd eting.</p>
+            <button id="click-btn">Meni Bos!</button>
+            <div id="score">Ball: 0</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CyberZone. GitHub Pages yordamida bepul yaratildi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
